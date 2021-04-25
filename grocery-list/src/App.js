@@ -28,7 +28,7 @@ function App() {
 			...groceryArray,
       {
         id: uuidv4(),
-        grocery: "",
+        grocery: grocery,
         isCompleted: false,
       }
     ]
