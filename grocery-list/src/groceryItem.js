@@ -3,15 +3,19 @@ import { GroceryItemContext } from './context/context'
 
 function GroceryItem() {
     const {
-        groceryItem: { id, grocery }
+        groceryItem: { id, grocery, isCompleted },
+        handleDeleteGroceryById,
+        handleDoneGroceryById,
     } = useContext(GroceryItemContext)
     useContext(GroceryItemContext);
     // console.log(groceryItem);
     return (
         <div>
-            {grocery}
+            <span style={{textDecoration: isCompleted ? "line-Through" : ""}}>
+                {grocery}
+                </span>
             <button>Done</button>
-            <button>Delete</button>
+            <button onClick={() => handleDeleteGroceryById(id)}>Delete</button>
         </div>
     );
 }
