@@ -28,7 +28,7 @@ function App() {
 			...groceryArray,
       {
         id: uuidv4(),
-        grocery: "Steaks",
+        grocery: "",
         isCompleted: false,
       }
     ]
@@ -40,6 +40,17 @@ function App() {
 		let filteredArray = groceryArray.filter((item) => item.id !== id);
 
 		setGroceryArray(filteredArray);
+	}
+
+  function handleDoneGroceryById(id) {
+		console.log(id);
+		let newGroceryArray = groceryArray.map((item) => {
+			if (item.id === id) {
+				item.isCompleted = !item.isCompleted;
+			}
+			return item;
+		});
+		setGroceryArray(newGroceryArray);
 	}
 
   function showGroceryInput() {
@@ -55,7 +66,8 @@ function App() {
       return (
         <GroceryItemContext.Provider value={{ 
           groceryItem: item,
-          handleDeleteGroceryById, 
+          handleDeleteGroceryById,
+          handleDoneGroceryById, 
         }}
         >
           <GroceryItem />
